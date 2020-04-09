@@ -18,10 +18,11 @@ from nltk.tree import Tree
 def is_imperative(tagged_sent):
     # if the sentence is not a question...
     if tagged_sent[-1][0] != "?":
-        # catches simple imperatives, e.g. "Open the pod bay doors, HAL!"
+         #catches simple imperatives, e.g. "Open the pod bay doors, HAL!"
+        
         if tagged_sent[0][1] == "VB" or tagged_sent[0][1] == "MD":
             return True
-
+        
         # catches imperative sentences starting with words like 'please', 'you',...
         # E.g. "Dave, stop.", "Just take a stress pill and think things over."
         else:
@@ -82,7 +83,6 @@ def tokenize(text):
             tokens.append(''.join(w))
     return tokens
 
-#text = 'Wash your hands frequently.'
-#tags = nltk.pos_tag(tokenize(text))
-#print(tags)
-#print(is_imperative(tags))
+text = 'This can discolor your pot or corrode its surface.'
+tags = nltk.pos_tag(tokenize(text))
+print(is_imperative(tags))
